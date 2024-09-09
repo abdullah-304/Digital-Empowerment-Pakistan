@@ -5,49 +5,37 @@ import java.awt.GridLayout;
 import javax.swing.*;
 import java.util.ArrayList;
 
-
 public class User {
     private int id;
     private String name;
     private int price;
-
     public User(int id, String name, int price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
-
-    // Getters and setters
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
-    }
-
+    
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
-
     @Override
     public String toString() {
         return " ID - " + id + " , "+" NAME - " + name + " , "+" PRICE - " + price;
-    }
-}
-
+    }}
 public class Com_Home extends JFrame {
     
     private ArrayList<User> productList = new ArrayList<>();
@@ -75,24 +63,20 @@ public class Com_Home extends JFrame {
         formPanel.add(nameField);
         nameField.setBackground(new Color(0, 153, 153));
 
-
         formPanel.add(new JLabel(" Product Price:"));
         priceField = new JTextField();
         formPanel.add(priceField);
         priceField.setBackground(new Color(0, 153, 153));
-
 
         JButton createButton = new JButton("CREATE");
         formPanel.add(createButton);
         JButton updateButton = new JButton("UPDATE");
         formPanel.add(updateButton);
 
-        // User List Panel
         JPanel productListPanel = new JPanel(new BorderLayout());
         productListPanel.add(new JLabel(" PRODUCT LIST:"), BorderLayout.NORTH);
         productListPanel.add(new JScrollPane(productListDisplay), BorderLayout.CENTER);
 
-        // Button Panel for Delete and Read
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
         JButton deleteButton = new JButton("DELETE");
         buttonPanel.add(deleteButton);
@@ -115,14 +99,12 @@ public class Com_Home extends JFrame {
 
         setVisible(true);
     }
-
     private void createUser() {
         try {
             int id = Integer.parseInt(idField.getText());
             String name = nameField.getText();
             int price = Integer.parseInt(priceField.getText());
             
-
             User user = new User(id, name, price);
             productList.add(user);
             listModel.addElement(user.toString());
@@ -131,7 +113,6 @@ public class Com_Home extends JFrame {
             JOptionPane.showMessageDialog(this, "Enter Correct Credentials");
         }
     }
-
     private void updateUser() {
         int selectedIndex = productListDisplay.getSelectedIndex();
         if (selectedIndex != -1) {
@@ -153,7 +134,6 @@ public class Com_Home extends JFrame {
             JOptionPane.showMessageDialog(this, "Select a user to update.");
         }
     }
-
     private void deleteUser() {
         int selectedIndex = productListDisplay.getSelectedIndex();
         if (selectedIndex != -1) {
@@ -164,7 +144,6 @@ public class Com_Home extends JFrame {
             JOptionPane.showMessageDialog(this, "Select a user to delete.");
         }
     }
-
     private void readUser() {
         int selectedIndex = productListDisplay.getSelectedIndex();
         if (selectedIndex != -1) {
@@ -175,8 +154,7 @@ public class Com_Home extends JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Select a user to read.");
         }
-    }
-
+ }
     private void clearFields() {
         idField.setText("");
         nameField.setText("");
@@ -184,10 +162,4 @@ public class Com_Home extends JFrame {
     }
      public static void main(String[] args){
         Com_Home ob = new Com_Home();
-    }
-}
-
-    
-   
-    
-    
+    }}
